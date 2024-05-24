@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'opciones',
     loadChildren: () => import('./opciones/opciones.module').then( m => m.OpcionesPageModule)
   },
+  {
+    path: 'agenda',
+    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
+  },
+
 ];
 
 @NgModule({
