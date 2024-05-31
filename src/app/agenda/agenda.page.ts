@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.page.html',
   styleUrls: ['./agenda.page.scss'],
 })
-export class AgendaPage implements OnInit {
+export class AgendaPage {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {}
   }
 
-}
+
+
+
+
