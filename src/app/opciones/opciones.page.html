@@ -1,17 +1,10 @@
-<!--ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>opciones</ion-title>
-  
-  </ion-toolbar>
-</ion-header-->
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!--ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">opciones</ion-title>
     </ion-toolbar>
-  </ion-header>
-  <!--cards de las diferentes opciones-->
+  </ion-header--> 
+  <!---->
   <ion-list>
     <!--inicio-->
     <ion-item>
@@ -51,22 +44,24 @@
   </ion-list>
   
 <!--tres botones del fondo-->
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button>
-        <ion-icon name="home"></ion-icon>
-        Menu
-      </ion-tab-button>
-      <ion-tab-button>
-        <ion-icon name="calendar"></ion-icon>
-        Agenda
-      </ion-tab-button>
-      <ion-tab-button>
-        <ion-icon name="menu"></ion-icon>
-        Más
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="agenda">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Agenda</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="opciones">
+      <ion-icon name="settings"></ion-icon>
+      <ion-label>Opciones</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
 <!--fin de los botones-->
 
 </ion-content>
