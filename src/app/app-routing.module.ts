@@ -16,10 +16,17 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'turnos',
+    loadChildren: () => import('./turnos/turnos.module').then( m => m.TurnosPageModule)
+  },
+
+  {
     path: 'editar-p',
     loadChildren: () => import('./editar-p/editar-p.module').then( m => m.EditarPPageModule)
   },
 ];
+
+
 
 @NgModule({
   imports: [
