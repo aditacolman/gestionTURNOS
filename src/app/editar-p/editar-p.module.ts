@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
-import { AgendaPage } from './agenda.page';
+
+import { EditarPPageRoutingModule } from './editar-p-routing.module';
+
+import { EditarPPage } from './editar-p.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: AgendaPage
-      }
-    ])
+    EditarPPageRoutingModule
   ],
-  declarations: [AgendaPage]
+  declarations: [EditarPPage]
 })
-export class AgendaPageModule {}
+export class EditarPPageModule {}
