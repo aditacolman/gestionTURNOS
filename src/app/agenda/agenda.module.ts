@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { AgendaPage } from './agenda.page';
+import { PopoverContentComponent } from '../popover-content/popover-content.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { AgendaPage } from './agenda.page';
       }
     ])
   ],
-  declarations: [AgendaPage]
+  declarations: [AgendaPage, PopoverContentComponent]
 })
 export class AgendaPageModule {}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { PopoverContentComponent } from '../popover-content/popover-content.component';
 
 @Component({
   selector: 'app-agenda',
@@ -13,13 +14,13 @@ export class AgendaPage {
 
   async dateSelected(event: any) {
     this.selectedDate = event.detail.value;
+
     const popover = await this.popoverController.create({
-      component: 'div',
-      componentProps: {
-        date: this.selectedDate
-      },
+      component: PopoverContentComponent,
+      componentProps: { date: this.selectedDate },
       translucent: true,
-      cssClass: 'custom-popover'
+      backdropDismiss: true, // Esto permite que el popover se cierre al hacer clic fuera
+      cssClass: 'custom-popover',
     });
     await popover.present();
   }

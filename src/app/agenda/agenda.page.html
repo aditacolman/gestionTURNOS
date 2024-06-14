@@ -1,18 +1,3 @@
 <ion-content>
   <ion-datetime presentation="date" class="agenda" (ionChange)="dateSelected($event)"></ion-datetime>
-
-  <!-- Contenido del Popover -->
-  <div *ngIf="selectedDate" class="custom-popover">
-    <ion-list>
-      <ion-chip>
-        <ion-avatar>
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
-        <ion-label>
-          <ion-text>Nombre</ion-text><br>
-          <ion-text>Turno</ion-text>
-        </ion-label> 
-      </ion-chip>
-    </ion-list>
-  </div>
 </ion-content>
