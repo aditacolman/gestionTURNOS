@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'editar-p',
+    loadChildren: () => import('./editar-p/editar-p.module').then( m => m.EditarPPageModule)
+  },
 ];
 
 @NgModule({
