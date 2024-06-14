@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { AgendaPageRoutingModule } from './agenda-routing.module';
+import { RouterModule } from '@angular/router';
 import { AgendaPage } from './agenda.page';
 
 @NgModule({
@@ -10,7 +10,12 @@ import { AgendaPage } from './agenda.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AgendaPageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: AgendaPage
+      }
+    ])
   ],
   declarations: [AgendaPage]
 })
