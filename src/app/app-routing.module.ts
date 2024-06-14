@@ -10,7 +10,11 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },  {
+    path: 'turnos',
+    loadChildren: () => import('./turnos/turnos.module').then( m => m.TurnosPageModule)
   },
+
 ];
 
 @NgModule({
