@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavController } from '@ionic/angular';
 import { PopoverContentComponent } from '../popover-content/popover-content.component';
 
 @Component({
@@ -10,7 +10,10 @@ import { PopoverContentComponent } from '../popover-content/popover-content.comp
 export class AgendaPage {
   selectedDate: string = '';
 
-  constructor(public popoverController: PopoverController) {}
+  constructor(
+    public popoverController: PopoverController,
+    private navCtrl: NavController // Agregamos NavController
+  ) {}
 
   async dateSelected(event: any) {
     this.selectedDate = event.detail.value;
@@ -23,5 +26,10 @@ export class AgendaPage {
       cssClass: 'custom-popover',
     });
     await popover.present();
+  }
+
+  // Método para volver a la pantalla anterior
+  volverAtras() {
+    this.navCtrl.back();
   }
 }
