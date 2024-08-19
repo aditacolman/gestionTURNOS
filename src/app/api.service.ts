@@ -5,8 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
+  url='https:/gestionturnos.pythonanywhere.com/';
 
-  constructor(http:HttpClient) {
-
+  constructor(private http:HttpClient) {}
+  
+  agregar_cliente(datos:any){
+    return this.http.post(this.url+ 'agregarClientes',datos);
   }
+  
+  traer_clientes(){
+    return this.http.get<[]>(this.url+'verClientes');
+  }  
 }
