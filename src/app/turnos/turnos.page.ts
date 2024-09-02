@@ -12,18 +12,22 @@ import { ApiService } from '../api.service';
 export class TurnosPage implements OnInit {
 
   turnos=[];
+  clientes=[];
+
   constructor(private servicio: ApiService) { }
 
   traerDatos(){
-    this.servicio.traer_turnos().subscribe(respuesta=>{
+    this.servicio.traer_clientes().subscribe(respuesta=>{
       console.log(respuesta)
-      this.turnos = respuesta
+      this.clientes = respuesta
     })
   
   }
 
+
   ngOnInit() {
     this.traerDatos()
+
   }
 
 }

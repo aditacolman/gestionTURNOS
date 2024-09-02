@@ -14,4 +14,26 @@ export class ApiService {
   traer_turnos(){
     return this.http.get<[]>(this.url + "verTurnos") 
   }
+
+  traer_clientes(){
+    return this.http.get<[]>(this.url + "verClientes") 
+  }
+
+  traer_turno_cliente(id_cliente:number){
+    return this.http.get(this.url + "")
+  }
+
+  nuevo_turno(datos:any){
+    return this.http.post(this.url + "agregarTurno", datos)
+  }
+
+  eliminar_turno(id:number){
+    return this.http.delete(this.url + "eliminarTurno/" + id)
+  }
+
+  actualizar_turno(id:number, datos:any){
+    return this.http.put(this.url  + "actualizarDatosTurno/" + id, datos)
+  }
+
+
 }
