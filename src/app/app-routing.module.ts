@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'editar-p',
     loadChildren: () => import('./editar-p/editar-p.module').then( m => m.EditarPPageModule)
   },
+  {
+    path: 'listado-clientes',
+    loadChildren: () => import('./listado-clientes/listado-clientes.module').then( m => m.ListadoClientesPageModule)
+  },
 ];
 
 
