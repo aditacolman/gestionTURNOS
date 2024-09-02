@@ -19,4 +19,7 @@ export class HomePage {
     this.router.navigateByUrl("editar-p")
   }
 
+  ngOnInit(){
+    console.log("funcionaaaaa")
+  }
 }

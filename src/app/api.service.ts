@@ -5,8 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
+  url = "http://gestionturnos.pythonanywhere.com/"
 
-  constructor(http:HttpClient) {
+  constructor(private http:HttpClient) {
 
+  }
+
+  traer_turnos(){
+    return this.http.get<[]>(this.url + "verTurnos") 
   }
 }
