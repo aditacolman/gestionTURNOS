@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-<<<<<<< HEAD
   url = "http://gestionturnos.pythonanywhere.com/"
 
   constructor(private http:HttpClient) {
@@ -37,17 +36,4 @@ export class ApiService {
   }
 
 
-=======
-  url='https:/gestionturnos.pythonanywhere.com/';
-
-  constructor(private http:HttpClient) {}
-  
-  agregar_cliente(datos:any){
-    return this.http.post(this.url+ 'agregarClientes',datos);
-  }
-  
-  traer_clientes(){
-    return this.http.get<[]>(this.url+'verClientes');
-  }  
->>>>>>> bcd0140611b68d209aa06ced081ae7a52f63ff4f
 }
