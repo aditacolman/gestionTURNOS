@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController, NavController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class TurnosPage implements OnInit {
   turnos=[];
   clientes=[];
 
-  constructor(private servicio: ApiService) { }
+  constructor(private servicio: ApiService,
+    private navCtrl: NavController // Agregamos NavController
+  ) {}
 
   traerDatos(){
     this.servicio.traer_clientes().subscribe(respuesta=>{
@@ -23,11 +26,13 @@ export class TurnosPage implements OnInit {
     })
   
   }
-
-
   ngOnInit() {
     this.traerDatos()
 
   }
+    // Método para volver a la pantalla anterior
+  volverAtras() {
+      this.navCtrl.back();
+    }
 
 }

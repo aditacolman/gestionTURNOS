@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-listado-clientes',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoClientesPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController ) { }
 
   ngOnInit() {
   }
 
+  volverAtras() {
+    this.navCtrl.back();
+  }
 }
