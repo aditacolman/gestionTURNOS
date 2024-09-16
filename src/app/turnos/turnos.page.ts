@@ -24,10 +24,23 @@ export class TurnosPage implements OnInit {
       console.log(respuesta)
       this.clientes = respuesta
     })
+
   
   }
+
+  traerTurnos(){
+    this.servicio.traer_turnos().subscribe(respuesta=>{
+      console.log(respuesta)
+      this.turnos = respuesta
+    })
+
+  
+  }
+
+
   ngOnInit() {
     this.traerDatos()
+    this.traerTurnos()
 
   }
     // Método para volver a la pantalla anterior
