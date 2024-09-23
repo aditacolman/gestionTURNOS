@@ -1,10 +1,20 @@
 ion-avatar {
-    --border-radius: 4px;
-    margin-top: 50%;
-    margin-bottom: 50%;
+  --border-radius: 4px;
   }
 
-ion-button {
-    margin-top: 50%;
-    margin-bottom: 50%;
+img {
+  margin-top: 100%;
+  margin-bottom: 100%;
+  width: 150%;
+  height: 150%;
+  min-width: 150%;
+}
+
+.boton {
+  margin-top: 50%;
+  margin-bottom: 50%;
+}
+
+ion-grid.ios.hydrated{
+  flex: 0!important;
 }

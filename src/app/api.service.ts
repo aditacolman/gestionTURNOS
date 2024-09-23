@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  url = "http://gestionturnos.pythonanywhere.com/"
+  url = "https://gestionturnos.pythonanywhere.com/"
 
   constructor(private http:HttpClient) {
 
