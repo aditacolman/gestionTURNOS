@@ -13,7 +13,7 @@
 <ion-searchbar></ion-searchbar>
 <ion-grid>
   <ion-row>
-    <ion-col >
+    <ion-col size="auto">
       <ion-list>
         <ion-item>
           <ion-select aria-label="Fruit" interface="popover" placeholder="Filtrar por">
@@ -28,7 +28,8 @@
       <ion-button fill="outline">Agregar cliente</ion-button>
     </ion-col>
   </ion-row>
-</ion-grid>  
+</ion-grid>
+
 <ion-content>
   <ion-card *ngFor="let cliente of clientes">
     <ion-grid>
