@@ -35,5 +35,15 @@ export class ApiService {
     return this.http.put(this.url  + "actualizarDatosTurno/" + id, datos)
   }
 
+  login_mov (Correo:string, Contrasena:string){
+
+    let datos ={
+      "Correo": Correo,
+      "Contrasena": Contrasena
+    }
+
+    return this.http.post(this.url  + "login_mov", datos)
+  }
+
 
 }

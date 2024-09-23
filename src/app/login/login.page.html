@@ -17,8 +17,8 @@
  <ion-text class="titulo-sesion">
    <h1>INICIO DE SESIÓN</h1>
  </ion-text>
- <ion-input fill="outline" placeholder="USUARIO" class="input"></ion-input>
- <ion-input fill="outline" placeholder=" CONTRASEÑA" class="input"></ion-input>
+ <ion-input [(ngModel)]="correo" fill="outline" placeholder="USUARIO" class="input"></ion-input>
+ <ion-input [(ngModel)]="contrasena" fill="outline" placeholder=" CONTRASEÑA" class="input"></ion-input>
  <ion-checkbox labelPlacement="end" class="checkboxRecuerdame">Recuérdame</ion-checkbox>
  <ion-text class="textContrasena">¿Olvidó su contraseña?</ion-text>
  <ion-buttons>
