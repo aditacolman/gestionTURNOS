@@ -1,0 +1,29 @@
+ion-grid {
+    margin: 0; /* Elimina márgenes externos */
+    padding: 0; /* Elimina relleno interno */
+  }
+  
+ion-avatar {
+    width: 100%; /* Ocupa todo el ancho del ion-col */
+    height: 100%; /* Ocupa todo el alto del ion-col */
+    display: flex; /* Usamos flex para centrar la imagen */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+  }
+  
+.img {
+    width: 100%; /* Asegúrate de que la imagen ocupe el 100% del contenedor */
+    height: 56%; /* Asegúrate de que la imagen ocupe el 100% del contenedor */
+    object-fit: cover; /* Mantiene el aspecto de la imagen y recorta si es necesario */
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+  }
+
+
+ion-card-header{
+    padding-bottom: 10px;
+}
+
+.boton {
+    width: 50px; /* Ajusta el ancho */
+    height: 50px; /* Ajusta la altura */
+  }
