@@ -10,9 +10,32 @@ import { ApiService } from '../api.service';
 })
 export class TrabajadoresPage implements OnInit {
 
-  constructor() { }
+  Trabajadores=[]
+
+  constructor(private navCtrl:NavController,
+    private Service:ApiService) {
+      
+
+   }
+
+   traerTrabajadores(){
+    this.Service.traerTrabajadores().subscribe(respuesta=>{
+      console.log(respuesta)
+      this.Trabajadores = respuesta
+    })
+
+  
+  }
+
 
   ngOnInit() {
+    this.traerTrabajadores();
+
   }
+
+  volverAtras() {
+    this.navCtrl.back();
+  }
+
 
 }

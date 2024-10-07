@@ -13,7 +13,7 @@
 <ion-searchbar></ion-searchbar>
 <ion-grid>
   <ion-row>
-    <ion-col >
+    <ion-col size="auto">
       <ion-list>
         <ion-item>
           <ion-select aria-label="Fruit" interface="popover" placeholder="Filtrar por">
@@ -28,9 +28,8 @@
       <ion-button fill="outline">Agregar cliente</ion-button>
     </ion-col>
   </ion-row>
-</ion-grid>  
 <ion-content>
-  <ion-card *ngFor="let cliente of clientes">
+  <ion-card *ngFor="let trabajador of Trabajadores">
     <ion-grid>
       <ion-row>
         <ion-col size="3">
@@ -40,9 +39,9 @@
         </ion-col>
         <ion-col size="5"> 
           <ion-card-header>
-            <ion-card-title class="nombre">{{cliente['Nombre']}} {{cliente['Apellido']}}</ion-card-title>
+            <ion-card-title class="nombre">{{trabajador['Nombre']}} {{trabajador['Apellido']}}</ion-card-title>
           </ion-card-header>
-          <ion-card-content>{{cliente['Telefono']}}</ion-card-content>
+          <ion-card-content>{{trabajador['Telefono']}}</ion-card-content>
         </ion-col>
         <ion-col size="4">
           <ion-button class="boton">
