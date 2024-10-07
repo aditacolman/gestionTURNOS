@@ -11,19 +11,25 @@ ion-avatar {
     align-items: center; /* Centra verticalmente */
   }
   
-.img {
-    width: 100%; /* Asegúrate de que la imagen ocupe el 100% del contenedor */
-    height: 56%; /* Asegúrate de que la imagen ocupe el 100% del contenedor */
-    object-fit: cover; /* Mantiene el aspecto de la imagen y recorta si es necesario */
-    border-radius: 50%; /* Hace que la imagen sea redonda */
-  }
-
 
 ion-card-header{
     padding-bottom: 10px;
+    padding-right: 0;
+    padding-left: 12px;
 }
 
-.boton {
-    width: 50px; /* Ajusta el ancho */
-    height: 50px; /* Ajusta la altura */
-  }
+ion-card-content{
+  padding-left: 12px;
+}
+
+.fab-button {
+  position: fixed; /* Fija el botón en la pantalla */
+  bottom: 16px;    /* Distancia desde la parte inferior */
+  right: 16px;     /* Distancia desde la derecha */
+  z-index: 1000;   /* Asegúrate de que esté encima de otros elementos */
+  background-color: red; /* Color de fondo para visibilidad */
+  color: white;  
+  border-radius: 50%; /* Hacer el botón circular */
+  height: 56px; /* Tamaño del botón */
+  width: 56px; /* Tamaño del botón */
+}
