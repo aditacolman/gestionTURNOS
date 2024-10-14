@@ -10,7 +10,7 @@ export class ApiService {
   constructor(private http:HttpClient) {
 
   }
-
+  
   traer_turnos(){
     return this.http.get<[]>(this.url + "verTurnos") 
   }

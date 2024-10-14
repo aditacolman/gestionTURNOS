@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="volverAtras()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Horarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">horarios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="scroll">
+  <ion-list lines="none">
+    <ion-item><ion-checkbox>08:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>09:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>10:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>11:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>12:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>13:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>14:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>15:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>16:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>17:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>18:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>19:00</ion-checkbox></ion-item>
+    <ion-item><ion-checkbox>20:00</ion-checkbox></ion-item>
+  </ion-list>
+  </div>
+</ion-content>
