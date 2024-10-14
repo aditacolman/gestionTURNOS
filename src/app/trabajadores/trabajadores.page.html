@@ -30,7 +30,7 @@
   </ion-row>
 </ion-grid>  
 <ion-content>
-  <ion-card *ngFor="let cliente of clientes">
+  <ion-card *ngFor="let trabajador of trabajadores">
     <ion-grid>
       <ion-row>
         <ion-col size="3">
@@ -40,9 +40,9 @@
         </ion-col>
         <ion-col size="5"> 
           <ion-card-header>
-            <ion-card-title class="nombre">{{cliente['Nombre']}} {{cliente['Apellido']}}</ion-card-title>
+            <ion-card-title class="nombre">{{trabajador['Nombre']}} {{trabajador['Apellido']}}</ion-card-title>
           </ion-card-header>
-          <ion-card-content>{{cliente['Telefono']}}</ion-card-content>
+          <ion-card-content>{{trabajador['Telefono']}}</ion-card-content>
         </ion-col>
         <ion-col size="4">
           <ion-button class="boton">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-opciones',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpcionesPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController // Agregamos NavController
+
+  ) { }
 
   ngOnInit() {
+  }
+
+  volverAtras() {
+    this.navCtrl.back();
   }
 
 }
