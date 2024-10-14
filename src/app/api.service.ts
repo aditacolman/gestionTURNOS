@@ -35,6 +35,10 @@ export class ApiService {
     return this.http.put(this.url  + "actualizarDatosTurno/" + id, datos)
   }
 
+  traerTrabajadores(){
+    return this.http.get<[]>(this.url + "verTrabajadores")
+  } 
+
   login_mov (Correo:string, Contrasena:string){
 
     let datos ={

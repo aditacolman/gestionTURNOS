@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'listado-clientes',
     loadChildren: () => import('./listado-clientes/listado-clientes.module').then( m => m.ListadoClientesPageModule)
-  },  {
+  },
+  {
     path: 'trabajadores',
     loadChildren: () => import('./trabajadores/trabajadores.module').then( m => m.TrabajadoresPageModule)
   },
