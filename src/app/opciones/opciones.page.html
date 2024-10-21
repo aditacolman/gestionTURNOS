@@ -1,72 +1,67 @@
-<ion-header>
+<ion-header style="color: #f7f7f7;">
   <ion-toolbar>
     <!-- Botón para volver -->
     <ion-buttons slot="start">
       <ion-button (click)="volverAtras()">
-        <ion-icon name="arrow-back-outline"></ion-icon>
+        <ion-icon name="arrow-back-outline" style="color: #73020C;"></ion-icon>
       </ion-button>
     </ion-buttons>
     <!-- Texto "Agenda" -->
-    <ion-title>Más</ion-title>
+    <ion-title style="color: #00010D;">Más</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<!--listas-->
-<!--2trabajadores-->
-<ion-item>
-  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="people"></ion-icon>
-  <ion-label>
-    <a class="texto" href="/trabajadores"><h1>Trabajadores</h1></a>
-  </ion-label>
-</ion-item>
+<ion-content style="color:#fff;">
+  <!--listas-->  
+  <ion-list lines="none">
+    <ion-item-group>
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="people"></ion-icon>
+        <a class="texto" href="/trabajadores"><h1>Trabajadores</h1></a>
+      </ion-item>
 
-<!--2clientes-->
-<ion-item class="espacioprimerItem">
-  <ion-icon slot="start" class="tamano-icon"aria-hidden="true" name="accessibility-outline"></ion-icon>
-  <ion-label>
-    <a class="texto" href="/listado-clientes"><h1>Clientes</h1></a>
-  </ion-label>
-</ion-item>
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon"aria-hidden="true" name="accessibility-outline"></ion-icon>
+        <a class="texto" href="/listado-clientes"><h1>Clientes</h1></a>
+      </ion-item>
 
-<!--2turnos-->
-<ion-item class="espacioprimerItem">
-  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="calendar-number-outline"></ion-icon>
-  <a class="texto" href="/turnos"><h1>Turnos</h1></a>
-</ion-item>
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="calendar-number-outline"></ion-icon>
+        <a class="texto" href="/turnos"><h1>Turnos</h1></a>
+      </ion-item>
 
-<!--2turnos-->
-<ion-item class="espacioprimerItem">
-  <ion-icon class="tamano-icon" slot="start" aria-hidden="true" name="time"></ion-icon>
-  <a class="texto" href="/horarios"><h1>Horarios</h1></a>
-</ion-item>
+      <ion-item>
+        <ion-icon class="tamano-icon" slot="start" aria-hidden="true" name="time"></ion-icon>
+        <a class="texto" href="/horarios"><h1>Horarios</h1></a>
+      </ion-item>
 
-<!--2turnos-->
-<ion-item class="espacioprimerItem">
-  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="wallet"></ion-icon>
-  <a class="texto" href="/horarios"><h1>Ganancias</h1></a>
-</ion-item>
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="wallet"></ion-icon>
+        <a class="texto" href="/horarios"><h1>Ganancias</h1></a>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 
-<!--divisor-->
-<ion-item-divider class="espacioprimerItem" >
-</ion-item-divider>
+  <ion-item lines="full" style="padding-top: 1rem; padding-bottom: 0.6rem;">
+    <ion-label></ion-label>
+  </ion-item>
 
-<!--3apariencia-->
-<ion-item class="espacioprimerItem">
-  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="sparkles-outline"></ion-icon>
-  <ion-label><h1 class="texto">Apariencia</h1></ion-label>
-</ion-item>
+  <ion-list lines="none">
+    <ion-item-group>
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="sparkles-outline"></ion-icon>
+        <a class="texto" href="#"><h1 class="texto">Apariencia</h1></a>
+      </ion-item>
 
-<!--1ayuda-->
-<ion-item class="espacioprimerItem">
-  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="help-circle"></ion-icon>
-  <ion-label><h1 class="texto">Ayuda</h1></ion-label>
-</ion-item>
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="help-circle"></ion-icon>
+        <a class="texto" href="#"><h1 class="texto">Ayuda</h1></a>
+      </ion-item>
 
-<!--4salir-->
-<ion-item class="espacioprimerItem">
-  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="log-out-outline"></ion-icon>
-  <a class="texto"><h1 >Salir</h1></a>
-</ion-item>
-
+      <ion-item>
+        <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="log-out-outline"></ion-icon>
+        <a class="texto"><h1 >Cerrar sesión</h1></a>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>

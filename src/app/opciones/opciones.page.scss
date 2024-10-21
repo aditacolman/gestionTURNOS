@@ -1,14 +1,10 @@
-.espacioItem{
-    margin-top: 10% !important;
-}
-
-.espacioprimerItem{
-    margin-top: 5% !important;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .tamano-icon{
-    height: 2.8rem; 
+    height: 2.5rem; 
     width: 3rem;
+    color: #9c3438;
 }
 
 .texto{
@@ -16,6 +12,15 @@
 }
 
 h1{
-    font-size: 1.3rem;
-    color: black;
+    font-size: 1.1rem;
+    color: #00010D;
+    font-family: "Reboto", sans-serif;
+}
+
+ion-item {
+    --min-height: auto; /* Anula el min-height */
+}
+
+ion-item ion-label {
+    display: none; /* Oculta el contenido del label en el elemento vacío */
 }
