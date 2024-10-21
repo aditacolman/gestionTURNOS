@@ -1,85 +1,72 @@
-<ion-content [fullscreen]="true">
-  <!--ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">opciones</ion-title>
-    </ion-toolbar>
-  </ion-header-->
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón para volver -->
+    <ion-buttons slot="start">
+      <ion-button (click)="volverAtras()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- Texto "Agenda" -->
+    <ion-title>Más</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
 <!--listas-->
-<!--1ayuda-->
-<ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <ion-label><h1>Inicio</h1></ion-label>
-</ion-item>
-
-<!--divisor-->
-<ion-item-divider class="espacioprimerItem" color="medium">
-</ion-item-divider>
-
 <!--2trabajadores-->
-<ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
+<ion-item>
+  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="people"></ion-icon>
   <ion-label>
-    <a href="/trabajadores"><h1>Trabajadores</h1></a>
+    <a class="texto" href="/trabajadores"><h1>Trabajadores</h1></a>
   </ion-label>
 </ion-item>
 
 <!--2clientes-->
 <ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
+  <ion-icon slot="start" class="tamano-icon"aria-hidden="true" name="accessibility-outline"></ion-icon>
   <ion-label>
-    <a href="/listado-clientes"><h1>Clientes</h1></a>
+    <a class="texto" href="/listado-clientes"><h1>Clientes</h1></a>
   </ion-label>
 </ion-item>
 
 <!--2turnos-->
 <ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <a href="/turnos"><h1>Turnos</h1></a>
+  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="calendar-number-outline"></ion-icon>
+  <a class="texto" href="/turnos"><h1>Turnos</h1></a>
 </ion-item>
 
 <!--2turnos-->
 <ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <a href="/horarios"><h1>Horarios</h1></a>
+  <ion-icon class="tamano-icon" slot="start" aria-hidden="true" name="time"></ion-icon>
+  <a class="texto" href="/horarios"><h1>Horarios</h1></a>
+</ion-item>
+
+<!--2turnos-->
+<ion-item class="espacioprimerItem">
+  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="wallet"></ion-icon>
+  <a class="texto" href="/horarios"><h1>Ganancias</h1></a>
 </ion-item>
 
 <!--divisor-->
-<ion-item-divider class="espacioprimerItem" color="medium">
+<ion-item-divider class="espacioprimerItem" >
 </ion-item-divider>
 
 <!--3apariencia-->
 <ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <ion-label><h1>Apariencia</h1></ion-label>
+  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="sparkles-outline"></ion-icon>
+  <ion-label><h1 class="texto">Apariencia</h1></ion-label>
 </ion-item>
 
 <!--1ayuda-->
 <ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <ion-label><h1>Ayuda</h1></ion-label>
+  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="help-circle"></ion-icon>
+  <ion-label><h1 class="texto">Ayuda</h1></ion-label>
 </ion-item>
 
 <!--4salir-->
 <ion-item class="espacioprimerItem">
-  <ion-thumbnail slot="start">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-  </ion-thumbnail>
-  <a><h1>Salir</h1></a>
+  <ion-icon slot="start" class="tamano-icon" aria-hidden="true" name="log-out-outline"></ion-icon>
+  <a class="texto"><h1 >Salir</h1></a>
 </ion-item>
 
 </ion-content>

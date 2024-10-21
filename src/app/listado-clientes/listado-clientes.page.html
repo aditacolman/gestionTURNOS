@@ -1,61 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <!-- Botón para volver -->
     <ion-buttons slot="start">
       <ion-button (click)="volverAtras()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <!-- Texto "Agenda" -->
     <ion-title>Clientes</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-searchbar></ion-searchbar>
-<ion-grid>
-  <ion-row>
-    <ion-col size="auto">
-      <ion-list>
-        <ion-item>
-          <ion-select aria-label="Fruit" interface="popover" placeholder="Filtrar por">
-            <ion-select-option value="apples">Nombre</ion-select-option>
-            <ion-select-option value="oranges">Apellido</ion-select-option>
-            <ion-select-option value="bananas">Antiguedad</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-    </ion-col>
-    <ion-col size="auto">
-      <ion-button fill="outline">Agregar cliente</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
 
 <ion-content>
-  <ion-card *ngFor="let cliente of clientes">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="3">
-          <ion-avatar>
-            <img class="img" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
-        </ion-col>
-        <ion-col size="5"> 
-          <ion-card-header>
-            <ion-card-title class="nombre">{{cliente['Nombre']}} {{cliente['Apellido']}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>{{cliente['Telefono']}}</ion-card-content>
-        </ion-col>
-        <ion-col size="4">
-          <ion-button class="boton">
-            <ion-icon name="create-outline"></ion-icon>
-          </ion-button>
-          <ion-button class="boton">
-            <ion-icon name="trash-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>  
-  </ion-card>
+  <ion-searchbar 
+    [(ngModel)]="searchTerm" 
+    (ionInput)="onSearch()" 
+    placeholder="Buscar clientes">
+  </ion-searchbar>
+
+  <ion-card *ngFor="let cliente of filteredClientes">
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="3" style="padding-left: 4%;">
+            <ion-avatar>
+              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="5" style="padding: 0;"> 
+            <ion-card-header>
+              <ion-card-title class="nombre">{{cliente['Nombre']}} {{cliente['Apellido']}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>{{cliente['Telefono']}}</ion-card-content>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="boton">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button class="boton">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+    </ion-card>
+
+  <ion-button class="fab-button"> <ion-icon style="width: 100%; height: 100%;" name="person-add-outline"></ion-icon>
+  </ion-button>
   
-  </ion-content>
+</ion-content>
 
