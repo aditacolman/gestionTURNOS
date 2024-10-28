@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverController, NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { ApiService } from '../api.service';
-
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 interface Cliente {
   Nombre: string;
@@ -17,6 +18,10 @@ interface Cliente {
 
 export class ListadoClientesPage implements OnInit {
 
+  @ViewChild(IonModal) modal: IonModal=Object();
+  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  name: string="";
+
   Clientes: Cliente[] = [];
   searchTerm: string = '';
   filteredClientes: Cliente[] = [];
@@ -25,6 +30,21 @@ export class ListadoClientesPage implements OnInit {
 
   constructor(private  servicio: ApiService, 
     private navCtrl: NavController ) { }
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.modal.dismiss(this.name, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
+  }  
 
   traerDatos(){
     this.servicio.traer_clientes().subscribe(respuesta=>{
@@ -38,7 +58,7 @@ export class ListadoClientesPage implements OnInit {
     this.traerDatos()
     }
   
-    // Método para filtrar los trabajadores según el término de búsqueda
+  // Método para filtrar los trabajadores según el término de búsqueda
   onSearch() {
     const searchTermLower = this.searchTerm.toLowerCase();
     this.filteredClientes = this.Clientes.filter(cliente => {
