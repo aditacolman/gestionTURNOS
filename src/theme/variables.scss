@@ -1,2 +1,21 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+:root {
+	--ion-color-bordo: #73020C;
+	--ion-color-bordo-rgb: 115,2,12;
+	--ion-color-bordo-contrast: #ffffff;
+	--ion-color-bordo-contrast-rgb: 255,255,255;
+	--ion-color-bordo-shade: #65020b;
+	--ion-color-bordo-tint: #811b24;
+}
+
+.ion-color-bordo {
+	--ion-color-base: var(--ion-color-bordo);
+	--ion-color-base-rgb: var(--ion-color-bordo-rgb);
+	--ion-color-contrast: var(--ion-color-bordo-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-bordo-contrast-rgb);
+	--ion-color-shade: var(--ion-color-bordo-shade);
+	--ion-color-tint: var(--ion-color-bordo-tint);
+}
+
