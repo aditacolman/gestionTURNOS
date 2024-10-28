@@ -3,14 +3,6 @@ ion-grid {
   padding: 0; /* Elimina relleno interno */
 }
 
-ion-avatar {
-  width: 100%; /* Ocupa todo el ancho del ion-col */
-  height: 100%; /* Ocupa todo el alto del ion-col */
-  display: flex; /* Usamos flex para centrar la imagen */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-}
-
 ion-card-header{
   padding-bottom: 10px;
   padding-right: 0;

@@ -1,23 +1,71 @@
 <ion-header>
   <ion-toolbar>
-    <!-- Botón para volver -->
     <ion-buttons slot="start">
       <ion-button (click)="volverAtras()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <!-- Texto "Agenda" -->
     <ion-title>Turnos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-  <ion-card *ngFor="let turno of turnos">
-    <ion-card-header>
-      <ion-card-title>{{turno['Fecha']}}</ion-card-title>
-      <ion-card-title>{{turno['Hora']}}</ion-card-title>
-      <ion-card-subtitle>{{turno['Nombre']}}</ion-card-subtitle>
-    </ion-card-header>
+<ion-content>
+  <ion-searchbar 
+    [(ngModel)]="searchTerm" 
+    (ionInput)="onSearch()" 
+    placeholder="Buscar turnos">
+  </ion-searchbar>
+
+  <ion-card *ngFor="let turno of filteredTurnos">
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="6" style="padding: 0;"> 
+            <ion-card-header>
+              <ion-card-title class="nombre">{{turno['Nombre_Cliente']}} {{turno['Apellido_Cliente']}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>{{turno['Servicio']}}</ion-card-content>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card-title>{{turno['Fecha']}}</ion-card-title>
+            <ion-card-title>{{turno['Hora']}}</ion-card-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+    </ion-card>
+
+    <div class="ion-padding">
+      <ion-fab class="fab-button">
+        <ion-fab-button id="open-modal">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="cancel()">Cancel</ion-button>
+              </ion-buttons>
+              <ion-title>Agregar turno</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-item>
+              <ion-input
+                label="Enter your name"
+                labelPlacement="stacked"
+                type="text"
+                placeholder="Your name"
+                [(ngModel)]="name"
+              ></ion-input>
+            </ion-item>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </div>
+    
   
-    <ion-card-content>
-    </ion-card-content>
-  </ion-card>
+</ion-content>

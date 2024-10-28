@@ -1,0 +1,27 @@
+ion-grid {
+    margin: 0; /* Elimina márgenes externos */
+    padding: 0; /* Elimina relleno interno */
+  }
+  
+ion-card-header{
+    padding-bottom: 10px;
+    padding-right: 0;
+    padding-left: 12px;
+  }
+  
+ion-card-content{
+    padding-left: 12px;
+}
+  
+.fab-button {
+  position: fixed; /* Fija el botón en la pantalla */
+  bottom: 16px;    /* Distancia desde la parte inferior */
+  right: 16px;     /* Distancia desde la derecha */
+  z-index: 1000;   /* Asegúrate de que esté encima de otros elementos */
+  background-color: red; /* Color de fondo para visibilidad */
+  color: white;  
+  border-radius: 50%; /* Hacer el botón circular */
+  height: 56px; /* Tamaño del botón */
+  width: 56px; /* Tamaño del botón */
+  }
+  
