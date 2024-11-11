@@ -15,64 +15,81 @@ interface Cliente {
   templateUrl: './listado-clientes.page.html',
   styleUrls: ['./listado-clientes.page.scss'],
 })
-
 export class ListadoClientesPage implements OnInit {
 
-  @ViewChild(IonModal) modal: IonModal=Object();
-  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
-  name: string="";
+  @ViewChild(IonModal) modal!: IonModal;  // No es necesario inicializarlo con Object()
+
+  name: string = "";
+  surname: string = "";
+  phone: string = "";
+  mail: string = "";
+  password: string = "";
+
+  message: string = 'Este es un ejemplo de modal inline en Ionic.';
 
   Clientes: Cliente[] = [];
-  searchTerm: string = '';
   filteredClientes: Cliente[] = [];
-  selectedFilter: string = 'nombre'; 
+  searchTerm: string = '';
+  selectedFilter: string = 'nombre'; // Se puede usar para personalizar el filtro
 
+  constructor(private servicio: ApiService, private navCtrl: NavController) {}
 
-  constructor(private  servicio: ApiService, 
-    private navCtrl: NavController ) { }
-
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  }
-
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
-    }
-  }  
-
-  traerDatos(){
-    this.servicio.traer_clientes().subscribe(respuesta=>{
+  enviar_formulario() {
+    this.servicio.agregarClientes(this.name, this.surname, this.phone, this.mail, this.password).subscribe(respuesta=>{
       console.log(respuesta)
-      this.Clientes = respuesta;
-      this.filteredClientes= respuesta; // Inicializa la lista filtrada
+      
     })
   }
 
-  ngOnInit() {
-    this.traerDatos()
+    onWillDismiss(event: Event) {
+      const ev = event as CustomEvent<OverlayEventDetail<string>>;
+      if (ev.detail.role === 'confirm') {
+        this.message = `¡Gracias por registrar a ${this.name}!`;
+  
+        // Crear cliente y enviarlo al backend
+        this.enviar_formulario();
+      }
+    }
+
+    // Método para cerrar el modal sin guardar
+    cancel() {
+      this.modal.dismiss(null, 'cancel');
     }
   
-  // Método para filtrar los trabajadores según el término de búsqueda
+    // Método para guardar los datos y cerrar el modal
+    confirm() {
+      this.modal.dismiss(this.name, 'confirm');
+      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+    }
+
+  // Trae los datos de los clientes desde el servicio
+  traerDatos() {
+    this.servicio.traer_clientes().subscribe(respuesta => {
+      console.log(respuesta);
+      this.Clientes = respuesta;
+      this.filteredClientes = respuesta; // Inicializa la lista filtrada
+    });
+  }
+
+  ngOnInit() {
+    this.traerDatos(); // Llama a traerDatos al iniciar el componente
+  }
+
+  // Método para filtrar los clientes según el término de búsqueda
   onSearch() {
     const searchTermLower = this.searchTerm.toLowerCase();
     this.filteredClientes = this.Clientes.filter(cliente => {
-      // Siempre busca en Nombre y Apellido
       return cliente.Nombre.toLowerCase().includes(searchTermLower) ||
-      cliente.Apellido.toLowerCase().includes(searchTermLower);
-      });
-    }
-  
-    // Método para actualizar el filtro seleccionado (no lo usamos en la búsqueda actual)
+             cliente.Apellido.toLowerCase().includes(searchTermLower);
+    });
+  }
+
+  // Método para cambiar el filtro seleccionado (aunque en tu búsqueda no lo usas aún)
   onFilterChange(event: any) {
     this.selectedFilter = event.detail.value;
-    }
+  }
 
+  // Método para volver atrás
   volverAtras() {
     this.navCtrl.back();
   }

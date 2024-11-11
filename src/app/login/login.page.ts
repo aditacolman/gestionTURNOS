@@ -14,8 +14,6 @@ export class LoginPage implements OnInit {
   constructor(private  servicio: ApiService) { }
 
   iniciar_sesion_mov(){
-    
-
   
   }
 

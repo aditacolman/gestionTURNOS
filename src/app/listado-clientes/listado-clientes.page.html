@@ -51,30 +51,63 @@
         <ng-template>
           <ion-header>
             <ion-toolbar>
+              <!-- Botones de control: Cancelar y Confirmar -->
               <ion-buttons slot="start">
-                <ion-button (click)="cancel()">Cancel</ion-button>
+                <ion-button (click)="cancel()">Cancelar</ion-button>
               </ion-buttons>
-              <ion-title>Agregar turno</ion-title>
+              <ion-title>Agregar cliente</ion-title>
               <ion-buttons slot="end">
-                <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+                <ion-button (click)="confirm()">Confirmar</ion-button>
               </ion-buttons>
             </ion-toolbar>
           </ion-header>
+    
           <ion-content class="ion-padding">
+            <!-- Formulario del modal -->
             <ion-item>
-              <ion-input label="Ingrese el nombre del cliente" labelPlacement="stacked" type="text" placeholder="Nombre" [(ngModel)]="name"></ion-input>
+              <ion-label position="stacked">Nombre</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Ingrese su nombre"
+                [(ngModel)]="name"
+                name="name"
+                required
+              ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input label="Ingrese el apellido del cliente" labelPlacement="stacked" type="text" placeholder="Apellido" [(ngModel)]="name"></ion-input>
+              <ion-label position="stacked">Apellido</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Ingrese su apellido"
+                [(ngModel)]="surname"
+                name="surname"
+                required
+              ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input label="Ingrese el teléfono del cliente" labelPlacement="stacked" type="text" placeholder="Teléfono" [(ngModel)]="name"></ion-input>
+              <ion-label position="stacked">Teléfono</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Ingrese su teléfono"
+                [(ngModel)]="phone"
+                name="phone"
+                required
+              ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input label="Ingrese el correo del cliente" labelPlacement="stacked" type="text" placeholder="Correo" [(ngModel)]="name"></ion-input>
+              <ion-input labelPlacement="floatinhg" label="Correo" type="email"  placeholder="ejemplo@gmail.com" [(ngModel)]="mail"
+              name="mail" required></ion-input>
             </ion-item>
+
             <ion-item>
-              <ion-input label="Ingrese una contraseña para cliente" labelPlacement="stacked" type="text" placeholder="Contrasena" [(ngModel)]="name"></ion-input>
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-input
+                type="password"
+                placeholder="Ingrese su contraseña"
+                [(ngModel)]="password"
+                name="password"
+                required
+              ></ion-input>
             </ion-item>
           </ion-content>
         </ng-template>
