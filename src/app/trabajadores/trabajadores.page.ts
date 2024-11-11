@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 interface Trabajador {
+  id: number; // Asegúrate de tener un ID único para cada trabajador
   Nombre: string;
   Apellido: string;
   Telefono: string;
-  // Agrega otras propiedades si es necesario
 }
 
 @Component({
@@ -16,43 +17,83 @@ interface Trabajador {
 })
 
 export class TrabajadoresPage implements OnInit {
-
-  Trabajadores: Trabajador[] = [];
+  //Trabajadores:Trabajador[] = [];
+  Trabajadores = [];
   searchTerm: string = '';
   filteredTrabajadores: Trabajador[] = [];
-  selectedFilter: string = 'nombre'; // Filtro por defecto
+  selectedFilter: string = 'nombre';
 
-  constructor(private navCtrl: NavController, private Service: ApiService) {}
+  constructor(
+    private navCtrl: NavController,
+    private alertController: AlertController,
+    private Service: ApiService,
+    private router:Router
+  ) {}
+
+  ngOnInit() {
+    this.traerTrabajadores();
+  }
 
   traerTrabajadores() {
     this.Service.traerTrabajadores().subscribe(respuesta => {
       console.log(respuesta);
       this.Trabajadores = respuesta;
-      this.filteredTrabajadores = respuesta; // Inicializa la lista filtrada
+      this.filteredTrabajadores = respuesta;
     });
-  }
-
-  ngOnInit() {
-    this.traerTrabajadores();
   }
 
   volverAtras() {
     this.navCtrl.back();
   }
 
-  // Método para filtrar los trabajadores según el término de búsqueda
   onSearch() {
     const searchTermLower = this.searchTerm.toLowerCase();
-    this.filteredTrabajadores = this.Trabajadores.filter(trabajador => {
-      // Siempre busca en Nombre y Apellido
-      return trabajador.Nombre.toLowerCase().includes(searchTermLower) ||
-             trabajador.Apellido.toLowerCase().includes(searchTermLower);
-    });
+    //this.filteredTrabajadores = this.Trabajadores.filter(trabajador =>
+      //trabajador.Nombre.toLowerCase().includes(searchTermLower) ||
+      //trabajador.Apellido.toLowerCase().includes(searchTermLower)
+    //);
   }
 
-  // Método para actualizar el filtro seleccionado (no lo usamos en la búsqueda actual)
   onFilterChange(event: any) {
     this.selectedFilter = event.detail.value;
-    // Aquí podrías agregar lógica adicional si decides usar el filtro de manera diferente
+  }
+
+  async confirmarEliminacion(id:any) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: `¿Estás seguro de que deseas eliminar a ?`,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.eliminarTrabajador(id); // Llama a la función de eliminación
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  eliminarTrabajador(id:any) {
+    console.log(id)
+    this.Service.eliminarTrabajador(id).subscribe(
+      (respuesta) => {
+        console.log('Respuesta del servidor:', respuesta);
+        this.router.navigateByUrl('/trabajadores', { skipLocationChange: true }).then(() => {
+          this.router.navigate([this.router.url]);
+        });
+        //this.Trabajadores = this.Trabajadores.filter(t => t !== trabajador);
+        //this.filteredTrabajadores = this.filteredTrabajadores.filter(t => t !== trabajador);
+      },
+      (error) => {
+        console.error('Error al eliminar el trabajador:', error);
+      }
+    );
   }
 }
+
