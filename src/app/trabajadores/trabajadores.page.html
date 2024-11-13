@@ -44,7 +44,60 @@
     </ion-card>
   </ion-grid>
 
-  <ion-button class="fab-button"> <ion-icon style="width: 100%; height: 100%;" name="person-add-outline"></ion-icon>
-  </ion-button>
+  <div class="ion-padding">
+    <ion-fab class="fab-button">
+      <ion-fab-button id="open-modal">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <!-- Botones de control: Cancelar y Confirmar -->
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancelar</ion-button>
+            </ion-buttons>
+            <ion-title>Agregar cliente</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirm()">Confirmar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+  
+        <ion-content class="ion-padding">
+          <!-- Formulario del modal -->
+          <ion-item>
+            <ion-input labelPlacement="floating" label= "Nombre" type="text" placeholder="Ingrese su nombre" [(ngModel)]="name"
+            name="name" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label= "Apellido" type="text" placeholder="Ingrese su apellido" [(ngModel)]="surname"
+            name="surname" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label= "DNI" type="text" placeholder="Ingrese su DNI" [(ngModel)]="dni"
+            name="dni" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label= "Teléfono" type="text" placeholder="Ingrese su teléfono" [(ngModel)]="phone"
+            name="phone" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label="Correo" type="email"  placeholder="ejemplo@gmail.com" [(ngModel)]="mail"
+            name="mail" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label= "Profesión" type="text" placeholder="Ingrese su profesión" [(ngModel)]="profesion"
+            name="profesion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label= "Contraseña" type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"
+            name="password" required></ion-input>
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
   
 </ion-content>

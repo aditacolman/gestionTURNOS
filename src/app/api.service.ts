@@ -63,4 +63,20 @@ export class ApiService {
 
     return this.http.post(this.url + "agregarClientes", datos);  // Aquí "agregarCliente" sería la ruta en tu backend para crear un cliente.
     }
+
+      // Método para agregar un nuevo cliente
+    agregarTrabajadores(Nombre:string, Apellido:string, Profesion:string, Correo:string, Telefono:string, DNI:number, Contrasena:string) {
+
+    let datos ={
+      "Nombre": Nombre,
+      "Apellido": Apellido,
+      "Profesion": Profesion,
+      "Correo": Correo,
+      "Telefono": Telefono,
+      "DNI": DNI,
+      "Contrasena": Contrasena
+    }
+
+    return this.http.post(this.url + "agregarTrabajadores", datos); 
+    }
   }

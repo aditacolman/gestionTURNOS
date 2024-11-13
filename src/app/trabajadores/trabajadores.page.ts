@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 interface Trabajador {
   id: number; // Asegúrate de tener un ID único para cada trabajador
@@ -17,6 +19,19 @@ interface Trabajador {
 })
 
 export class TrabajadoresPage implements OnInit {
+
+  @ViewChild(IonModal) modal!: IonModal;  // No es necesario inicializarlo con Object()
+
+  name: string = "";
+  surname: string = "";
+  phone: string = "";
+  mail: string = "";
+  profesion: string = "";
+  dni: number | null = null;  
+  password: string = "";
+
+  message: string = 'Este es un ejemplo de modal inline en Ionic.';
+
   //Trabajadores:Trabajador[] = [];
   Trabajadores = [];
   searchTerm: string = '';
@@ -40,6 +55,35 @@ export class TrabajadoresPage implements OnInit {
       this.Trabajadores = respuesta;
       this.filteredTrabajadores = respuesta;
     });
+  }
+
+  enviar_formulario() {
+    const dniToSend = this.dni ?? 0;
+    this.Service.agregarTrabajadores(this.name, this.surname, this.profesion, this.mail, this.phone, dniToSend, this.password).subscribe(respuesta=>{
+      console.log(respuesta)
+      
+    })
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `¡Gracias por registrar a ${this.name}!`;
+  
+      // Crear cliente y enviarlo al backend
+      this.enviar_formulario();
+    }
+  }
+
+    // Método para cerrar el modal sin guardar
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+  
+  // Método para guardar los datos y cerrar el modal
+  confirm() {
+    this.modal.dismiss(this.name, 'confirm');
+    this.message = `Cliente registrado: ${this.name} ${this.surname}`;
   }
 
   volverAtras() {

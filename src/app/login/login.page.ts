@@ -23,7 +23,6 @@ export class LoginPage implements OnInit {
   enviar_formulario() {
     this.servicio.login_mov(this.correo, this.contrasena).subscribe(respuesta=>{
       console.log(respuesta)
-    
     })
   }
 

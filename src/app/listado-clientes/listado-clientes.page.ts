@@ -30,6 +30,8 @@ export class ListadoClientesPage implements OnInit {
   Clientes: Cliente[] = [];
   filteredClientes: Cliente[] = [];
   selectedFilter: string = 'nombre';
+  searchTerm: string = '';
+  
 
   constructor(
     private servicio: ApiService,
@@ -49,6 +51,34 @@ export class ListadoClientesPage implements OnInit {
       this.filteredClientes = respuesta; // Inicializa la lista filtrada
     });
   }
+
+  enviar_formulario() {
+    this.servicio.agregarClientes(this.name, this.surname, this.phone, this.mail, this.password).subscribe(respuesta=>{
+      console.log(respuesta)
+      
+    })
+  }
+
+    onWillDismiss(event: Event) {
+      const ev = event as CustomEvent<OverlayEventDetail<string>>;
+      if (ev.detail.role === 'confirm') {
+        this.message = `¡Gracias por registrar a ${this.name}!`;
+  
+        // Crear cliente y enviarlo al backend
+        this.enviar_formulario();
+      }
+    }
+
+    // Método para cerrar el modal sin guardar
+    cancel() {
+      this.modal.dismiss(null, 'cancel');
+    }
+  
+    // Método para guardar los datos y cerrar el modal
+    confirm() {
+      this.modal.dismiss(this.name, 'confirm');
+      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+    }
 
   // Método para filtrar los clientes según el término de búsqueda
   onSearch() {
@@ -98,75 +128,7 @@ export class ListadoClientesPage implements OnInit {
     console.log(`Cliente ${cliente.Nombre} ${cliente.Apellido} eliminado`);
   }
 
-  // Métodos para manejar el modal
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  searchTerm: string = '';
-  selectedFilter: string = 'nombre'; // Se puede usar para personalizar el filtro
-
-  constructor(private servicio: ApiService, private navCtrl: NavController) {}
-
-  enviar_formulario() {
-    this.servicio.agregarClientes(this.name, this.surname, this.phone, this.mail, this.password).subscribe(respuesta=>{
-      console.log(respuesta)
-      
-    })
-  }
-
-    onWillDismiss(event: Event) {
-      const ev = event as CustomEvent<OverlayEventDetail<string>>;
-      if (ev.detail.role === 'confirm') {
-        this.message = `¡Gracias por registrar a ${this.name}!`;
-  
-        // Crear cliente y enviarlo al backend
-        this.enviar_formulario();
-      }
-    }
-
-    // Método para cerrar el modal sin guardar
-    cancel() {
-      this.modal.dismiss(null, 'cancel');
-    }
-  
-    // Método para guardar los datos y cerrar el modal
-    confirm() {
-      this.modal.dismiss(this.name, 'confirm');
-      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
-    }
-  }  
-
-  traerDatos(){
-    this.servicio.traer_clientes().subscribe(respuesta=>{
-      console.log(respuesta)
-      this.Clientes = respuesta;
-      this.filteredClientes= respuesta; // Inicializa la lista filtrada
-    })
-  }
-
-  ngOnInit() {
-    this.traerDatos()
-    }
-  
-  // Método para filtrar los trabajadores según el término de búsqueda
-  onSearch() {
-    const searchTermLower = this.searchTerm.toLowerCase();
-    this.filteredClientes = this.Clientes.filter(cliente => {
-      // Siempre busca en Nombre y Apellido
-      return cliente.Nombre.toLowerCase().includes(searchTermLower) ||
-      cliente.Apellido.toLowerCase().includes(searchTermLower);
-      });
-    }
-  
-    // Método para actualizar el filtro seleccionado (no lo usamos en la búsqueda actual)
-  onFilterChange(event: any) {
-    this.selectedFilter = event.detail.value;
-    }
-
-  volverAtras() {
-    this.navCtrl.back();
-  }
 }
+
+
+  
