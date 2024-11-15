@@ -12,12 +12,12 @@
 <ion-content>
   <ion-searchbar 
     [(ngModel)]="searchTerm" 
-    (ionInput)="onSearch()" 
+    (ionInput)="onSearch($event)" 
     placeholder="Buscar trabajadores">
   </ion-searchbar>
 
   <ion-grid>
-    <ion-card *ngFor="let trabajador of Trabajadores">
+    <ion-card *ngFor="let trabajador of filteredTrabajadores">
       <ion-grid>
         <ion-row class="ion-justify-content-center ion-align-items-center">
           <ion-col size="3" style="padding-left: 4%;">

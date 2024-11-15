@@ -1,0 +1,47 @@
+<ion-content class="ion-padding center-content">
+  <!-- Avatar y título -->
+  <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+    <ion-avatar size="large">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Avatar">
+    </ion-avatar>
+  </div>
+  
+  <h2 style="margin-bottom: 20px; text-align: center;">Registrate</h2>
+  
+  <!-- Formulario -->
+  <form #form="ngForm" (ngSubmit)="enviar_formulario(form)">
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Nombre" type="text" placeholder="Ingrese su nombre" [(ngModel)]="name" name="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Apellido" type="text" placeholder="Ingrese su apellido" [(ngModel)]="surname" name="surname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" label="DNI" type="text" placeholder="Ingrese su DNI" [(ngModel)]="dni" name="dni" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Teléfono" type="text" placeholder="Ingrese su teléfono" [(ngModel)]="phone" name="phone" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Correo" type="email" placeholder="ejemplo@gmail.com" [(ngModel)]="mail" name="mail" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Profesión" type="text" placeholder="Ingrese su profesión" [(ngModel)]="profesion" name="profesion" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Contraseña" type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+  
+    <ion-footer>
+      <ion-toolbar style="justify-content: space-between;">
+        <ion-buttons slot="start">
+          <a href="/login"><ion-button color="bordo">Volver</ion-button></a>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button type="submit" [disabled]="form.invalid" color="bordo">Continuar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+</ion-content>
+

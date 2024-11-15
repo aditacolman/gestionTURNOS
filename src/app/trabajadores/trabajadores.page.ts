@@ -33,9 +33,9 @@ export class TrabajadoresPage implements OnInit {
   message: string = 'Este es un ejemplo de modal inline en Ionic.';
 
   //Trabajadores:Trabajador[] = [];
-  Trabajadores = [];
+  Trabajadores:any[] = [];
   searchTerm: string = '';
-  filteredTrabajadores: Trabajador[] = [];
+  filteredTrabajadores: any[] = [];
   selectedFilter: string = 'nombre';
 
   constructor(
@@ -52,7 +52,7 @@ export class TrabajadoresPage implements OnInit {
   traerTrabajadores() {
     this.Service.traerTrabajadores().subscribe(respuesta => {
       console.log(respuesta);
-      this.Trabajadores = respuesta;
+      //this.Trabajadores = respuesta;
       this.filteredTrabajadores = respuesta;
     });
   }
@@ -90,13 +90,18 @@ export class TrabajadoresPage implements OnInit {
     this.navCtrl.back();
   }
 
-  onSearch() {
-    const searchTermLower = this.searchTerm.toLowerCase();
-    //this.filteredTrabajadores = this.Trabajadores.filter(trabajador =>
-      //trabajador.Nombre.toLowerCase().includes(searchTermLower) ||
-      //trabajador.Apellido.toLowerCase().includes(searchTermLower)
-    //);
+  onSearch(event:any) {
+    const searchTerm = event.detail.value?.toLowerCase() || '';
+    console.log(searchTerm)
+    //console.log(this.Trabajadores.filter(item))
+    this.filteredTrabajadores = this.Trabajadores.filter(item =>{
+
+      item["Nombre"].toLowerCase().includes(searchTerm);
+
+    })
   }
+      
+    
 
   onFilterChange(event: any) {
     this.selectedFilter = event.detail.value;
