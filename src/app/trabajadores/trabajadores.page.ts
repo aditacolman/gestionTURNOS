@@ -5,21 +5,12 @@ import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 
-interface Trabajador {
-  id: number; // Asegúrate de tener un ID único para cada trabajador
-  Nombre: string;
-  Apellido: string;
-  Telefono: string;
-}
-
 @Component({
   selector: 'app-trabajadores',
   templateUrl: './trabajadores.page.html',
   styleUrls: ['./trabajadores.page.scss'],
 })
-
 export class TrabajadoresPage implements OnInit {
-
   @ViewChild(IonModal) modal!: IonModal;  // No es necesario inicializarlo con Object()
 
   name: string = "";
@@ -52,7 +43,6 @@ export class TrabajadoresPage implements OnInit {
   traerTrabajadores() {
     this.Service.traerTrabajadores().subscribe(respuesta => {
       console.log(respuesta);
-      //this.Trabajadores = respuesta;
       this.filteredTrabajadores = respuesta;
     });
   }
@@ -61,8 +51,7 @@ export class TrabajadoresPage implements OnInit {
     const dniToSend = this.dni ?? 0;
     this.Service.agregarTrabajadores(this.name, this.surname, this.profesion, this.mail, this.phone, dniToSend, this.password).subscribe(respuesta=>{
       console.log(respuesta)
-      
-    })
+    });
   }
 
   onWillDismiss(event: Event) {
@@ -75,12 +64,10 @@ export class TrabajadoresPage implements OnInit {
     }
   }
 
-    // Método para cerrar el modal sin guardar
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
   
-  // Método para guardar los datos y cerrar el modal
   confirm() {
     this.modal.dismiss(this.name, 'confirm');
     this.message = `Cliente registrado: ${this.name} ${this.surname}`;
@@ -90,24 +77,18 @@ export class TrabajadoresPage implements OnInit {
     this.navCtrl.back();
   }
 
-  onSearch(event:any) {
+  onSearch(event: any) {
     const searchTerm = event.detail.value?.toLowerCase() || '';
-    console.log(searchTerm)
-    //console.log(this.Trabajadores.filter(item))
-    this.filteredTrabajadores = this.Trabajadores.filter(item =>{
-
-      item["Nombre"].toLowerCase().includes(searchTerm);
-
-    })
+    this.filteredTrabajadores = this.Trabajadores.filter(item => {
+      return item["Nombre"].toLowerCase().includes(searchTerm);
+    });
   }
-      
-    
 
   onFilterChange(event: any) {
     this.selectedFilter = event.detail.value;
   }
 
-  async confirmarEliminacion(id:any) {
+  async confirmarEliminacion(id: any) {
     const alert = await this.alertController.create({
       header: 'Confirmar eliminación',
       message: `¿Estás seguro de que deseas eliminar a ?`,
@@ -119,7 +100,7 @@ export class TrabajadoresPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.eliminarTrabajador(id); // Llama a la función de eliminación
+            this.eliminarTrabajador(id);
           },
         },
       ],
@@ -128,21 +109,30 @@ export class TrabajadoresPage implements OnInit {
     await alert.present();
   }
 
-  eliminarTrabajador(id:any) {
-    console.log(id)
+  eliminarTrabajador(id: any) {
     this.Service.eliminarTrabajador(id).subscribe(
       (respuesta) => {
         console.log('Respuesta del servidor:', respuesta);
         this.router.navigateByUrl('/trabajadores', { skipLocationChange: true }).then(() => {
           this.router.navigate([this.router.url]);
         });
-        //this.Trabajadores = this.Trabajadores.filter(t => t !== trabajador);
-        //this.filteredTrabajadores = this.filteredTrabajadores.filter(t => t !== trabajador);
       },
       (error) => {
         console.error('Error al eliminar el trabajador:', error);
       }
     );
   }
-}
 
+  // Verificación de si el formulario es válido
+  isFormValid(): boolean {
+    return (
+      this.name.trim() !== '' &&
+      this.surname.trim() !== '' &&
+      this.phone.trim() !== '' &&
+      this.mail.trim() !== '' &&
+      this.profesion.trim() !== '' &&
+      this.dni !== null &&
+      this.password.trim() !== ''
+    );
+  }
+}
