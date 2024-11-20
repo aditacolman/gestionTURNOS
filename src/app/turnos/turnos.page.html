@@ -19,15 +19,20 @@
   <ion-card *ngFor="let turno of filteredTurnos">
       <ion-grid>
         <ion-row class="ion-justify-content-center ion-align-items-center">
-          <ion-col size="6" style="padding: 0;"> 
+          <ion-col size="7" style="padding: 0;"> 
             <ion-card-header>
               <ion-card-title class="nombre">{{turno['Nombre_Cliente']}} {{turno['Apellido_Cliente']}}</ion-card-title>
             </ion-card-header>
-            <ion-card-content>{{turno['Servicio']}}</ion-card-content>
+            <ion-card-content style="padding-bottom: 4px;">{{turno['Servicio']}}</ion-card-content>
+            <ion-card-content style="padding-bottom: 8px;">{{turno['Fecha']}}, {{turno['Hora']}} hs.</ion-card-content>
           </ion-col>
-          <ion-col size="6">
-            <ion-card-title>{{turno['Fecha']}}</ion-card-title>
-            <ion-card-title>{{turno['Hora']}}</ion-card-title>
+          <ion-col size="5" style="padding-right: 3px;">
+            <ion-button class="boton">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button class="boton" (click)="confirmarEliminacion(turno['ID'])">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>  

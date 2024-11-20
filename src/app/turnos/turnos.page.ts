@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, NavController } from '@ionic/angular';
+import { NavController,  AlertController} from '@ionic/angular';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 
 interface Turno {
@@ -9,6 +10,7 @@ interface Turno {
   Fecha: string;
   Hora: string;
   Servicio: string;
+  ID:string
 }
 
 @Component({
@@ -26,7 +28,7 @@ export class TurnosPage implements OnInit {
 
 
   constructor(private servicio: ApiService, 
-    private navCtrl: NavController ) { } // Agregamos NavController
+    private navCtrl: NavController, private alertController: AlertController, private router:Router ) { }
 
 
   traerTurnos(){
@@ -58,5 +60,40 @@ export class TurnosPage implements OnInit {
 
   volverAtras() {
     this.navCtrl.back();
+  }
+
+  async confirmarEliminacion(id: any) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: `¿Estás seguro de que deseas eliminar este turno?`,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.eliminarTurno(id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  eliminarTurno(id: any) {
+    this.servicio.eliminarTurno(id).subscribe(
+      (respuesta) => {
+        console.log('Respuesta del servidor:', respuesta);
+        this.router.navigateByUrl('/turnos', { skipLocationChange: true }).then(() => {
+          this.router.navigate([this.router.url]);
+        });
+      },
+      (error) => {
+        console.error('Error al eliminar el turno:', error);
+      }
+    );
   }
 }

@@ -25,7 +25,7 @@ export class ApiService {
     return this.http.post(this.url + "agregarTurno", datos);
   }
 
-  eliminar_turno(id: number) {
+  eliminarTurno(id: any) {
     return this.http.delete(this.url + "eliminarTurno/" + id);
   }
 
