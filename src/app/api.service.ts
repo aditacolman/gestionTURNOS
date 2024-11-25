@@ -57,14 +57,7 @@ export class ApiService {
     return this.http.delete(this.url + "eliminarCliente/" + id);
   }
 
-<<<<<<< HEAD
-  login_mov(Correo: string, Contrasena: string) {
-    let datos = {
-      "Correo": Correo,
-      "Contrasena": Contrasena
-    };
-    return this.http.post(this.url + "login_mov", datos);
-  }
+
 
   actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, Telefono:string, Correo:string, Contrasena:string){
   let datos ={
@@ -80,8 +73,6 @@ export class ApiService {
   }
 
   // Método para agregar un nuevo cliente
-=======
->>>>>>> df0a488d4bc20807edb8aa4430199e71968fd834
   agregarClientes(Nombre:string, Apellido:string, Telefono:string, Correo:string, Contrasena:string) {
     let datos ={
       "Nombre": Nombre,
