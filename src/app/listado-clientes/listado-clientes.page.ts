@@ -8,6 +8,7 @@ interface Cliente {
   Nombre: string;
   Apellido: string;
   Telefono: string;
+  ID: number
 }
 
 @Component({
@@ -55,6 +56,7 @@ export class ListadoClientesPage implements OnInit {
   enviar_formulario() {
     this.servicio.agregarClientes(this.name, this.surname, this.phone, this.mail, this.password).subscribe(respuesta=>{
       console.log(respuesta)
+      location.href="/listado-clientes"
       
     })
   }
@@ -100,7 +102,8 @@ export class ListadoClientesPage implements OnInit {
   }
 
   // Muestra un pop-up de confirmación de eliminación
-  async confirmarEliminacion(cliente: Cliente) {
+  async confirmarEliminacion(cliente: any) {
+    console.log(cliente)
     const alert = await this.alertController.create({
       header: 'Confirmar eliminación',
       message: `¿Estás seguro de que deseas eliminar a ${cliente.Nombre} ${cliente.Apellido}?`,
@@ -112,7 +115,7 @@ export class ListadoClientesPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.eliminarCliente(cliente); // Llama a la función de eliminación
+            this.eliminarCliente(cliente.ID); // Llama a la función de eliminación
           },
         },
       ],
@@ -123,9 +126,16 @@ export class ListadoClientesPage implements OnInit {
 
   // Función para eliminar al cliente
   eliminarCliente(cliente: Cliente) {
-    this.Clientes = this.Clientes.filter(c => c !== cliente);
-    this.filteredClientes = this.filteredClientes.filter(c => c !== cliente);
-    console.log(`Cliente ${cliente.Nombre} ${cliente.Apellido} eliminado`);
+    console.log(cliente)
+    this.servicio.eliminarCliente(cliente).subscribe(
+      (respuesta) => {
+        console.log('Respuesta del servidor:', respuesta);
+        location.href="/listado-clientes"
+      },
+      (error) => {
+        console.error('Error al eliminar el cliente:', error);
+      }
+    );
   }
 
 }

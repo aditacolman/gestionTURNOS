@@ -52,8 +52,14 @@ export class ApiService {
   eliminarTrabajador(id: any) {
     return this.http.delete(this.url + "eliminarTrabajador/" + id);
   }
-  
-  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, DNI:number, Telefono:string, Correo:string, Contrasena:string){
+
+  eliminarCliente(id: any) {
+    return this.http.delete(this.url + "eliminarCliente/" + id);
+  }
+
+
+
+  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, Telefono:string, Correo:string, Contrasena:string){
   let datos ={
     "Nombre": Nombre,
     "Apellido": Apellido,

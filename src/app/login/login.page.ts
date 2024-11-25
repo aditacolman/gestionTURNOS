@@ -34,10 +34,17 @@ export class LoginPage implements OnInit {
         return of(null); // Devolver un observable vacío
       })
     ).subscribe(respuesta => {
-      if (respuesta) {
+
+      if (respuesta["resultado"]=="usuario no encontrado"){
+        this.mensajeError= respuesta["resultado"]
+      }else{
+        let id = respuesta["resultado"][0]
+        console.log(respuesta["resultado"][0]);
+        sessionStorage.setItem("id_usuario", id)
         // Si la respuesta es válida, redirige a la página de inicio
         this.router.navigate(['/tabs/home']);
       }
+
     });
   }
 

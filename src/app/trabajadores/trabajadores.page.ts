@@ -70,6 +70,7 @@ export class TrabajadoresPage implements OnInit {
     const dniToSend = this.dni ?? 0;
     this.Service.agregarTrabajadores(this.name, this.surname, this.profesion, this.mail, this.phone, dniToSend, this.password).subscribe(respuesta=>{
       console.log(respuesta)
+      location.href="/trabajadores"
     });
   }
 
