@@ -43,7 +43,8 @@ export class TrabajadoresPage implements OnInit {
   traerTrabajadores() {
     this.Service.traerTrabajadores().subscribe(respuesta => {
       console.log(respuesta);
-      this.filteredTrabajadores = respuesta;
+      this.Trabajadores = respuesta;
+      this.filteredTrabajadores = this.Trabajadores
     });
   }
 
@@ -80,7 +81,8 @@ export class TrabajadoresPage implements OnInit {
   onSearch(event: any) {
     const searchTerm = event.detail.value?.toLowerCase() || '';
     this.filteredTrabajadores = this.Trabajadores.filter(item => {
-      return item["Nombre"].toLowerCase().includes(searchTerm);
+      return item["Nombre"].toLowerCase().includes(searchTerm) || 
+      item["Apellido"].toLowerCase().includes(searchTerm)
     });
   }
 
