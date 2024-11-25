@@ -53,6 +53,10 @@ export class ApiService {
     return this.http.delete(this.url + "eliminarTrabajador/" + id);
   }
 
+  eliminarCliente(id: any) {
+    return this.http.delete(this.url + "eliminarCliente/" + id);
+  }
+
 <<<<<<< HEAD
   login_mov(Correo: string, Contrasena: string) {
     let datos = {

@@ -35,6 +35,9 @@ export class LoginPage implements OnInit {
       })
     ).subscribe(respuesta => {
       if (respuesta) {
+        let id = respuesta["resultado"][0]
+        console.log(respuesta["resultado"][0]);
+        sessionStorage.setItem("id_usuario", id)
         // Si la respuesta es válida, redirige a la página de inicio
         this.router.navigate(['/tabs/home']);
       }
