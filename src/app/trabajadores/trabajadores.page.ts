@@ -51,6 +51,13 @@ export class TrabajadoresPage implements OnInit {
     this.traerTrabajadores();
   }
 
+  modificarDatosTrabajador(){
+    const dniAEnviar = this.dniEditar ?? 0;
+    this.Service.actualizarDatosTrabajador(this.nombre, this.apellido, this.profesionEditar, dniAEnviar, this.telefono, this.correo, this.contrasenaEditar).subscribe(respuesta=>{
+      console.log(respuesta)
+    });
+  }
+
   traerTrabajadores() {
     this.Service.traerTrabajadores().subscribe(respuesta => {
       console.log(respuesta);
@@ -76,38 +83,40 @@ export class TrabajadoresPage implements OnInit {
     }
   }
 
-  cancel() {
+  cancelAgregar() {
     // Cerrar el modal de agregar si está abierto
     if (this.modalAgregar) {
       this.modalAgregar.dismiss(null, 'cancel');
       console.log("Modal de agregar cerrado");
     }
-  
-    // Cerrar el modal de editar si está abierto
+  }
+
+  cancelEditar() {
+    // Cerrar el modal de agregar si está abierto
     if (this.modalEditar) {
       this.modalEditar.dismiss(null, 'cancel');
       console.log("Modal de editar cerrado");
     }
-  
-    // Redirigir al HTML original o a la página que desees
-    this.router.navigate(['/trabajadores']); // O usa this.navCtrl.back() si deseas regresar a la pantalla anterior
   }
   
-  confirm() {
-    // Si estamos en el modal de agregar, confirmar y cerrar el modal de agregar
-    if (this.modalAgregar) {
-      this.modalAgregar.dismiss(this.name, 'confirm');
-      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
-      // Llamamos al método para enviar los datos del formulario
-      this.enviar_formulario();
-    }
   
+  confirmEditar() {
     // Si estamos en el modal de editar, confirmar y cerrar el modal de editar
     if (this.modalEditar) {
+      console.log("editar modal")
       this.modalEditar.dismiss(this.nombre, 'confirm');
       this.message = `Cliente modificado: ${this.nombre} ${this.apellido}`;
-      // Aquí podrías llamar a un método de edición (no implementado en el código original)
-      // Ejemplo: this.editarTrabajador();
+      this.modificarDatosTrabajador();
+    }
+  }
+
+  confirmAgregar() {
+    // Si estamos en el modal de agregar, confirmar y cerrar el modal de agregar
+    if (this.modalAgregar) {
+      console.log("agregar modal")
+      this.modalAgregar.dismiss(this.name, 'confirm');
+      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+      this.enviar_formulario();
     }
   }
 

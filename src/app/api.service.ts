@@ -52,32 +52,23 @@ export class ApiService {
   eliminarTrabajador(id: any) {
     return this.http.delete(this.url + "eliminarTrabajador/" + id);
   }
-
-<<<<<<< HEAD
-  login_mov(Correo: string, Contrasena: string) {
-    let datos = {
-      "Correo": Correo,
-      "Contrasena": Contrasena
-    };
-    return this.http.post(this.url + "login_mov", datos);
-  }
-
-  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, Telefono:string, Correo:string, Contrasena:string){
+  
+  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, DNI:number, Telefono:string, Correo:string, Contrasena:string){
   let datos ={
     "Nombre": Nombre,
     "Apellido": Apellido,
     "Profesion": Profesion,
+    "DNI": DNI,
     "Telefono": Telefono,
     "Correo": Correo,
     "Contrasena": Contrasena
   }
+  console.log(datos)
 
-  return this.http.put(this.url + "actualizarDatosTrabajador", datos);  // Aquí "agregarCliente" sería la ruta en tu backend para crear un cliente.
+  return this.http.put(this.url + "actualizarDatosTrabajador/"+DNI, datos);
   }
 
   // Método para agregar un nuevo cliente
-=======
->>>>>>> df0a488d4bc20807edb8aa4430199e71968fd834
   agregarClientes(Nombre:string, Apellido:string, Telefono:string, Correo:string, Contrasena:string) {
     let datos ={
       "Nombre": Nombre,

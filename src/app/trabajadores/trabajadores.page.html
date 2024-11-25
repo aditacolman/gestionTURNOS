@@ -41,11 +41,11 @@
                 <ion-header>
                   <ion-toolbar>
                     <ion-buttons slot="start">
-                      <ion-button (click)="cancel()">Cancelar</ion-button>
+                      <ion-button (click)="cancelEditar()">Cancelar</ion-button>
                     </ion-buttons>
                     <ion-title>Modificar trabajador</ion-title>
                     <ion-buttons slot="end">
-                      <ion-button [disabled]="isFormValid()" (click)="confirm()">Confirmar</ion-button>
+                      <ion-button [disabled]="isFormValid()" (click)="confirmEditar()">Confirmar</ion-button>
                     </ion-buttons>
                   </ion-toolbar>
                 </ion-header>
@@ -102,8 +102,8 @@
                       label="Ingrese su nuevo correo" 
                       type="email"  
                       placeholder="{{trabajador['Correo']}}" 
-                      [(ngModel)]="mail"
-                      name="correo" 
+                      [(ngModel)]="correo"
+                      name="mail" 
                       required>
                     </ion-input>
                   </ion-item>
@@ -113,8 +113,8 @@
                       label="Ingrese su nueva profesión" 
                       type="text" 
                       placeholder="{{trabajador['Profesion']}}"
-                      [(ngModel)]="profesion"
-                      name="profesionEditar" 
+                      [(ngModel)]="profesionEditar"
+                      name="profesion" 
                       required>
                     </ion-input>
                   </ion-item>
@@ -153,11 +153,11 @@
         <ion-header>
           <ion-toolbar>
             <ion-buttons slot="start">
-              <ion-button (click)="cancel()">Cancelar</ion-button>
+              <ion-button (click)="cancelAgregar()">Cancelar</ion-button>
             </ion-buttons>
             <ion-title>Agregar trabajador</ion-title>
             <ion-buttons slot="end">
-              <ion-button [disabled]="!isFormValid()" (click)="confirm()">Confirmar</ion-button>
+              <ion-button [disabled]="!isFormValid()" (click)="confirmAgregar()">Confirmar</ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
