@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,17 @@ export class ApiService {
   url = "https://gestionturnos.pythonanywhere.com/";
 
   constructor(private http: HttpClient) {}
+
+  // Método para hacer login
+  login_mov(Correo: string, Contrasena: string): Observable<any> {
+    let datos = {
+      "Correo": Correo,
+      "Contrasena": Contrasena
+    };
+    return this.http.post(this.url + "login_mov", datos);
+  }
+
+  // Otros métodos para interactuar con la API
 
   traer_turnos() {
     return this.http.get<[]>(this.url + "verTurnos");
@@ -37,11 +49,11 @@ export class ApiService {
     return this.http.get<[]>(this.url + "verTrabajadores");
   }
 
-  // Método para eliminar un trabajador por ID
   eliminarTrabajador(id: any) {
     return this.http.delete(this.url + "eliminarTrabajador/" + id);
   }
 
+<<<<<<< HEAD
   login_mov(Correo: string, Contrasena: string) {
     let datos = {
       "Correo": Correo,
@@ -64,8 +76,9 @@ export class ApiService {
   }
 
   // Método para agregar un nuevo cliente
+=======
+>>>>>>> df0a488d4bc20807edb8aa4430199e71968fd834
   agregarClientes(Nombre:string, Apellido:string, Telefono:string, Correo:string, Contrasena:string) {
-
     let datos ={
       "Nombre": Nombre,
       "Apellido": Apellido,
@@ -73,13 +86,10 @@ export class ApiService {
       "Correo": Correo,
       "Contrasena": Contrasena
     }
+    return this.http.post(this.url + "agregarClientes", datos);
+  }
 
-    return this.http.post(this.url + "agregarClientes", datos);  // Aquí "agregarCliente" sería la ruta en tu backend para crear un cliente.
-    }
-
-      // Método para agregar un nuevo cliente
-    agregarTrabajadores(Nombre:string, Apellido:string, Profesion:string, Correo:string, Telefono:string, DNI:number, Contrasena:string) {
-
+  agregarTrabajadores(Nombre:string, Apellido:string, Profesion:string, Correo:string, Telefono:string, DNI:number, Contrasena:string) {
     let datos ={
       "Nombre": Nombre,
       "Apellido": Apellido,
@@ -89,7 +99,6 @@ export class ApiService {
       "DNI": DNI,
       "Contrasena": Contrasena
     }
-
-    return this.http.post(this.url + "agregarTrabajadores", datos); 
-    }
+    return this.http.post(this.url + "agregarTrabajadores", datos);
   }
+}

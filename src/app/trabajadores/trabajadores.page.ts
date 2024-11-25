@@ -152,9 +152,12 @@ export class TrabajadoresPage implements OnInit {
     this.Service.eliminarTrabajador(id).subscribe(
       (respuesta) => {
         console.log('Respuesta del servidor:', respuesta);
+        location.href="/trabajadores"
+        /*
         this.router.navigateByUrl('/trabajadores', { skipLocationChange: true }).then(() => {
           this.router.navigate([this.router.url]);
         });
+        */
       },
       (error) => {
         console.error('Error al eliminar el trabajador:', error);
