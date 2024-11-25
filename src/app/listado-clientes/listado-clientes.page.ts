@@ -56,6 +56,7 @@ export class ListadoClientesPage implements OnInit {
   enviar_formulario() {
     this.servicio.agregarClientes(this.name, this.surname, this.phone, this.mail, this.password).subscribe(respuesta=>{
       console.log(respuesta)
+      location.href="/listado-clientes"
       
     })
   }
@@ -129,10 +130,10 @@ export class ListadoClientesPage implements OnInit {
     this.servicio.eliminarCliente(cliente).subscribe(
       (respuesta) => {
         console.log('Respuesta del servidor:', respuesta);
-       // location.href="/listado-clientes"
+        location.href="/listado-clientes"
       },
       (error) => {
-        console.error('Error al eliminar el trabajador:', error);
+        console.error('Error al eliminar el cliente:', error);
       }
     );
   }
