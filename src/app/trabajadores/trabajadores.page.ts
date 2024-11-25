@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, AlertController } from '@ionic/angular';
+import { NavController, AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
@@ -11,7 +11,8 @@ import { OverlayEventDetail } from '@ionic/core/components';
   styleUrls: ['./trabajadores.page.scss'],
 })
 export class TrabajadoresPage implements OnInit {
-  @ViewChild(IonModal) modal!: IonModal;  // No es necesario inicializarlo con Object()
+  @ViewChild('modalAgregar') modalAgregar!: IonModal;  // Referencia para el modal de agregar
+  @ViewChild('modalEditar') modalEditar!: IonModal;   // No es necesario inicializarlo con Object()
 
   name: string = "";
   surname: string = "";
@@ -20,6 +21,14 @@ export class TrabajadoresPage implements OnInit {
   profesion: string = "";
   dni: number | null = null;  
   password: string = "";
+
+  nombre: string = "";
+  apellido: string = "";
+  telefono: string = "";
+  correo: string = "";
+  profesionEditar: string = "";
+  dniEditar: number | null = null;  
+  contrasenaEditar: string = "";
 
   message: string = 'Este es un ejemplo de modal inline en Ionic.';
 
@@ -34,7 +43,9 @@ export class TrabajadoresPage implements OnInit {
     private alertController: AlertController,
     private Service: ApiService,
     private router:Router
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     this.traerTrabajadores();
@@ -66,12 +77,38 @@ export class TrabajadoresPage implements OnInit {
   }
 
   cancel() {
-    this.modal.dismiss(null, 'cancel');
+    // Cerrar el modal de agregar si está abierto
+    if (this.modalAgregar) {
+      this.modalAgregar.dismiss(null, 'cancel');
+      console.log("Modal de agregar cerrado");
+    }
+  
+    // Cerrar el modal de editar si está abierto
+    if (this.modalEditar) {
+      this.modalEditar.dismiss(null, 'cancel');
+      console.log("Modal de editar cerrado");
+    }
+  
+    // Redirigir al HTML original o a la página que desees
+    this.router.navigate(['/trabajadores']); // O usa this.navCtrl.back() si deseas regresar a la pantalla anterior
   }
   
   confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-    this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+    // Si estamos en el modal de agregar, confirmar y cerrar el modal de agregar
+    if (this.modalAgregar) {
+      this.modalAgregar.dismiss(this.name, 'confirm');
+      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+      // Llamamos al método para enviar los datos del formulario
+      this.enviar_formulario();
+    }
+  
+    // Si estamos en el modal de editar, confirmar y cerrar el modal de editar
+    if (this.modalEditar) {
+      this.modalEditar.dismiss(this.nombre, 'confirm');
+      this.message = `Cliente modificado: ${this.nombre} ${this.apellido}`;
+      // Aquí podrías llamar a un método de edición (no implementado en el código original)
+      // Ejemplo: this.editarTrabajador();
+    }
   }
 
   volverAtras() {
