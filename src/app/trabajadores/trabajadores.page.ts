@@ -51,10 +51,11 @@ export class TrabajadoresPage implements OnInit {
     this.traerTrabajadores();
   }
 
-  modificarDatosTrabajador(){
-    const dniAEnviar = this.dniEditar ?? 0;
-    this.Service.actualizarDatosTrabajador(this.nombre, this.apellido, this.profesionEditar, dniAEnviar, this.telefono, this.correo, this.contrasenaEditar).subscribe(respuesta=>{
+  modificarDatosTrabajador(nom:string, ape:string, prof:string, dni:number, tel:string, correo:string, clave:string){
+    //const dniAEnviar = this.dniEditar ?? 0;
+    this.Service.actualizarDatosTrabajador(nom, ape, prof, dni, tel, correo, clave).subscribe(respuesta=>{
       console.log(respuesta)
+      location.href = "/trabajadores"
     });
   }
 
@@ -101,14 +102,17 @@ export class TrabajadoresPage implements OnInit {
   }
   
   
-  confirmEditar() {
+  confirmEditar(nom:string, ape:string, prof:string, dni:number, tel:string, correo:string, clave:string) {
     // Si estamos en el modal de editar, confirmar y cerrar el modal de editar
-    if (this.modalEditar) {
+    console.log("editando")
+    console.log(this.modalEditar)
+
       console.log("editar modal")
-      this.modalEditar.dismiss(this.nombre, 'confirm');
+      //this.modalEditar.dismiss(this.nombre, 'confirm');
       this.message = `Cliente modificado: ${this.nombre} ${this.apellido}`;
-      this.modificarDatosTrabajador();
-    }
+      this.modificarDatosTrabajador(nom, ape, prof, dni, tel, correo, clave);
+      
+    
   }
 
   confirmAgregar() {

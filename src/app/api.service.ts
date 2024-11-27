@@ -59,7 +59,7 @@ export class ApiService {
 
 
 
-  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, Telefono:string, Correo:string, Contrasena:string){
+  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, DNI:number, Telefono:string, Correo:string, Contrasena:string){
   let datos ={
     "Nombre": Nombre,
     "Apellido": Apellido,
