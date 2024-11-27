@@ -31,9 +31,80 @@
             <ion-card-content>{{cliente['Telefono']}}</ion-card-content>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="boton">
-              <ion-icon name="create-outline"></ion-icon>
-            </ion-button>
+            <div>
+              <ion-button  id="open-editar-modal-{{cliente['ID']}}">
+                <ion-icon name="create-outline"></ion-icon>
+              </ion-button>
+              <ion-modal #modalEditar{{cliente.ID}} trigger="open-editar-modal-{{cliente['ID']}}">
+                <ng-template>
+                  <ion-header>
+                    <ion-toolbar>
+                      <ion-buttons slot="start">
+                        <ion-button (click)="cancelEditar()">Cancelar</ion-button>
+                      </ion-buttons>
+                      <ion-title>Modificar cliente</ion-title>
+                      <ion-buttons slot="end">
+                        <ion-button  (click)="confirmEditar(cliente['ID'],cliente['Nombre'], cliente['Apellido'], cliente['Telefono'], cliente['Correo'], cliente['Contrasena'])">Confirmar</ion-button>
+                      </ion-buttons>
+                    </ion-toolbar>
+                  </ion-header>
+            
+                  <ion-content class="ion-padding">
+                    <!-- Formulario del modal -->
+                    <ion-item>
+                      <ion-input 
+                        labelPlacement="floating" 
+                        label="Ingrese su nuevo nombre" 
+                        type="text" 
+                        [(ngModel)]="cliente.Nombre"
+                        name="name" 
+                        required>
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input 
+                        labelPlacement="floating" 
+                        label="Ingrese su nuevo apellido" 
+                        type="text" 
+                        [(ngModel)]="cliente.Apellido"
+                        name="surname" 
+                        required>
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input 
+                        labelPlacement="floating" 
+                        label="Ingrese su nuevo número de teléfono" 
+                        type="text" 
+                        [(ngModel)]="cliente.Telefono"
+                        name="phone" 
+                        required>
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input 
+                        labelPlacement="floating" 
+                        label="Ingrese su nuevo correo" 
+                        type="email"  
+                        [(ngModel)]="cliente.Correo"
+                        name="mail" 
+                        required>
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input 
+                        labelPlacement="floating" 
+                        label="Ingrese su nueva contrasena" 
+                        type="text" 
+                        name="contrasena" 
+                        required>
+                      </ion-input>
+                    </ion-item>
+                    
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+              </div>
             <ion-button class="boton" (click)="confirmarEliminacion(cliente)">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
@@ -53,11 +124,11 @@
             <ion-toolbar>
               <!-- Botones de control: Cancelar y Confirmar -->
               <ion-buttons slot="start">
-                <ion-button (click)="cancel()">Cancelar</ion-button>
+                <ion-button (click)="cancelAgregar()">Cancelar</ion-button>
               </ion-buttons>
               <ion-title>Agregar cliente</ion-title>
               <ion-buttons slot="end">
-                <ion-button (click)="confirm()">Confirmar</ion-button>
+                <ion-button (click)="confirmAgregar()">Confirmar</ion-button>
               </ion-buttons>
             </ion-toolbar>
           </ion-header>

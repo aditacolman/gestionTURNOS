@@ -57,22 +57,33 @@ export class ApiService {
     return this.http.delete(this.url + "eliminarCliente/" + id);
   }
 
-
-
-  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, DNI:number, Telefono:string, Correo:string, Contrasena:string){
+  actualizarDatosTrabajador(Nombre:string, Apellido:string, Profesion:string, DNI:number, Telefono:string, Correo:string){
   let datos ={
     "Nombre": Nombre,
     "Apellido": Apellido,
     "Profesion": Profesion,
     "DNI": DNI,
     "Telefono": Telefono,
-    "Correo": Correo,
-    "Contrasena": Contrasena
+    "Correo": Correo
   }
   console.log(datos)
 
   return this.http.put(this.url + "actualizarDatosTrabajador/"+DNI, datos);
   }
+
+  actualizarDatosCliente(ID:number, Nombre:string, Apellido:string, Telefono:string, Correo:string, Contrasena:string){
+    let datos ={
+      "ID": ID,
+      "Nombre": Nombre,
+      "Apellido": Apellido,
+      "Telefono": Telefono,
+      "Correo": Correo,
+      "Contrasena": Contrasena
+    }
+    console.log(datos)
+  
+    return this.http.put(this.url + "actualizarDatosCliente/"+ID, datos);
+    }
 
   // Método para agregar un nuevo cliente
   agregarClientes(Nombre:string, Apellido:string, Telefono:string, Correo:string, Contrasena:string) {

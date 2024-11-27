@@ -8,7 +8,9 @@ interface Cliente {
   Nombre: string;
   Apellido: string;
   Telefono: string;
-  ID: number
+  ID: number;
+  Correo:string;
+  Contrasena:string;
 }
 
 @Component({
@@ -17,14 +19,20 @@ interface Cliente {
   styleUrls: ['./listado-clientes.page.scss'],
 })
 export class ListadoClientesPage implements OnInit {
-
-  @ViewChild(IonModal) modal!: IonModal;  // No es necesario inicializarlo con Object()
+  @ViewChild('modalEditar') modalEditar!: IonModal;   // No es necesario inicializarlo con Object()
+  @ViewChild('modalAgregar') modalAgregar!: IonModal;  // Referencia para el modal de agregar
 
   name: string = "";
   surname: string = "";
   phone: string = "";
   mail: string = "";
-  password: string = "";
+  password: string = "";    
+
+  nombre: string = "";
+  apellido: string = "";
+  telefono: string = "";
+  correo: string = "";
+  contrasena: string = "";
 
   message: string = 'Este es un ejemplo de modal inline en Ionic.';
 
@@ -39,6 +47,36 @@ export class ListadoClientesPage implements OnInit {
     private navCtrl: NavController,
     private alertController: AlertController
   ) {}
+
+  modificarDatosCliente(id:number, nom:string, ape:string, tel:string, correo:string, contrasena:string){
+    //const dniAEnviar = this.dniEditar ?? 0;
+    
+    this.servicio.actualizarDatosCliente(id, nom, ape, tel, correo, contrasena).subscribe(respuesta=>{
+     console.log(respuesta)
+     location.href = "/listado-clientes"
+    });
+    
+  }
+
+  confirmEditar(id:number, nom:string, ape:string, tel:string, correo:string,contrasena:string) {
+    // Si estamos en el modal de editar, confirmar y cerrar el modal de editar
+    console.log("editando")
+    console.log(this.modalEditar)
+
+      console.log("editar modal")
+      //this.modalEditar.dismiss(this.nombre, 'confirm');
+      this.message = `Cliente modificado: ${this.nombre} ${this.apellido}`;
+      this.modificarDatosCliente(id, nom, ape, tel, correo, contrasena);
+      
+  }
+
+  cancelEditar() {
+    // Cerrar el modal de agregar si está abierto
+    if (this.modalEditar) {
+      this.modalEditar.dismiss(null, 'cancel');
+      console.log("Modal de editar cerrado");
+    }
+  }
 
   ngOnInit() {
     this.traerDatos();
@@ -71,15 +109,22 @@ export class ListadoClientesPage implements OnInit {
       }
     }
 
-    // Método para cerrar el modal sin guardar
-    cancel() {
-      this.modal.dismiss(null, 'cancel');
+    confirmAgregar() {
+      // Si estamos en el modal de agregar, confirmar y cerrar el modal de agregar
+      if (this.modalAgregar) {
+        console.log("agregar modal")
+        this.modalAgregar.dismiss(this.name, 'confirm');
+        this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+        this.enviar_formulario();
+      }
     }
-  
-    // Método para guardar los datos y cerrar el modal
-    confirm() {
-      this.modal.dismiss(this.name, 'confirm');
-      this.message = `Cliente registrado: ${this.name} ${this.surname}`;
+
+    cancelAgregar() {
+      // Cerrar el modal de agregar si está abierto
+      if (this.modalAgregar) {
+        this.modalAgregar.dismiss(null, 'cancel');
+        console.log("Modal de agregar cerrado");
+      }
     }
 
   // Método para filtrar los clientes según el término de búsqueda

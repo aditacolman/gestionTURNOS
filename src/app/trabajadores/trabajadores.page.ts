@@ -28,7 +28,6 @@ export class TrabajadoresPage implements OnInit {
   correo: string = "";
   profesionEditar: string = "";
   dniEditar: number | null = null;  
-  contrasenaEditar: string = "";
 
   message: string = 'Este es un ejemplo de modal inline en Ionic.';
 
@@ -51,9 +50,9 @@ export class TrabajadoresPage implements OnInit {
     this.traerTrabajadores();
   }
 
-  modificarDatosTrabajador(nom:string, ape:string, prof:string, dni:number, tel:string, correo:string, clave:string){
+  modificarDatosTrabajador(nom:string, ape:string, prof:string, dni:number, tel:string, correo:string){
     //const dniAEnviar = this.dniEditar ?? 0;
-    this.Service.actualizarDatosTrabajador(nom, ape, prof, dni, tel, correo, clave).subscribe(respuesta=>{
+    this.Service.actualizarDatosTrabajador(nom, ape, prof, dni, tel, correo).subscribe(respuesta=>{
       console.log(respuesta)
       location.href = "/trabajadores"
     });
@@ -101,8 +100,7 @@ export class TrabajadoresPage implements OnInit {
     }
   }
   
-  
-  confirmEditar(nom:string, ape:string, prof:string, dni:number, tel:string, correo:string, clave:string) {
+  confirmEditar(nom:string, ape:string, prof:string, dni:number, tel:string, correo:string) {
     // Si estamos en el modal de editar, confirmar y cerrar el modal de editar
     console.log("editando")
     console.log(this.modalEditar)
@@ -110,7 +108,7 @@ export class TrabajadoresPage implements OnInit {
       console.log("editar modal")
       //this.modalEditar.dismiss(this.nombre, 'confirm');
       this.message = `Cliente modificado: ${this.nombre} ${this.apellido}`;
-      this.modificarDatosTrabajador(nom, ape, prof, dni, tel, correo, clave);
+      this.modificarDatosTrabajador(nom, ape, prof, dni, tel, correo);
       
     
   }
