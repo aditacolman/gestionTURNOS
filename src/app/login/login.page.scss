@@ -42,7 +42,15 @@
     text-align: center;
     margin-top: 7%;
 }
-
+.botonRegistroContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Ajusta la separación según lo necesites */
+}
+  
+  
 .botonRegistro{
     margin-left: auto;
     margin-right: auto;

@@ -1,13 +1,4 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* src/global.scss */
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -25,13 +16,22 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Eliminar cualquier importación del modo oscuro */
+@import "@ionic/angular/css/palettes/dark.system.css"; /* Elimina esta línea */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+/* Forzar siempre el tema claro con fondo blanco y texto negro */
+:root {
+  --ion-background-color: #ffffff;  /* Fondo blanco para la aplicación */
+  --ion-text-color: #000000;        /* Texto negro en toda la aplicación */
+  
+  /* Colores específicos para otros elementos */
+  --ion-card-background: #ffffff;   /* Fondo blanco en tarjetas */
+  --ion-item-background: #ffffff;   /* Fondo blanco en los ítems */
+  --ion-button-background: #3880ff; /* Fondo azul claro para botones */
+  --ion-button-text-color: #ffffff;/* Texto blanco en los botones */
+  --ion-toolbar-background: #ffffff; /* Fondo blanco en la barra de herramientas */
+  --ion-toolbar-color: #000000;     /* Texto negro en la barra de herramientas */
+  --ion-fab-background: #3880ff;    /* Fondo azul en botones flotantes */
+  --ion-fab-text-color: #ffffff;    /* Texto blanco en los botones flotantes */
+  --ion-label-color: #000000;       /* Texto negro en las etiquetas */
+}
