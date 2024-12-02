@@ -87,9 +87,7 @@ export class TurnosPage implements OnInit {
     this.servicio.eliminarTurno(id).subscribe(
       (respuesta) => {
         console.log('Respuesta del servidor:', respuesta);
-        this.router.navigateByUrl('/turnos', { skipLocationChange: true }).then(() => {
-          this.router.navigate([this.router.url]);
-        });
+        location.href="/turnos"
       },
       (error) => {
         console.error('Error al eliminar el turno:', error);
